@@ -35,6 +35,10 @@ env/
 *~
 .DS_Store
 
+# Cursor IDE
+.cursorrules
+.memory-bank/
+
 # Environment variables and secrets
 .env
 .env.local

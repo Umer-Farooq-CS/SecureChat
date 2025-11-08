@@ -50,5 +50,88 @@ Result:
 ================================================================================
 """
 
-"""AES-128(ECB)+PKCS#7 helpers (use library).""" 
-raise NotImplementedError("students: implement AES helpers")
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import padding
+
+from app.common.utils import b64e, b64d
+
+
+def encrypt_aes128(plaintext: bytes, key: bytes) -> str:
+    """
+    Encrypts plaintext using AES-128 in ECB mode with PKCS#7 padding.
+    
+    Args:
+        plaintext: Plaintext message to encrypt (bytes)
+        key: 16-byte AES key (128 bits)
+        
+    Returns:
+        str: Base64-encoded ciphertext
+        
+    Raises:
+        ValueError: If key length is not 16 bytes
+    """
+    if len(key) != 16:
+        raise ValueError(f"AES-128 requires 16-byte key, got {len(key)} bytes")
+    
+    # Create AES cipher in ECB mode
+    cipher = Cipher(
+        algorithms.AES(key),
+        modes.ECB(),
+        backend=default_backend()
+    )
+    
+    # Create encryptor
+    encryptor = cipher.encryptor()
+    
+    # Apply PKCS#7 padding (block size = 16 bytes for AES)
+    padder = padding.PKCS7(128).padder()
+    padded_data = padder.update(plaintext)
+    padded_data += padder.finalize()
+    
+    # Encrypt
+    ciphertext = encryptor.update(padded_data) + encryptor.finalize()
+    
+    # Return base64-encoded ciphertext
+    return b64e(ciphertext)
+
+
+def decrypt_aes128(ciphertext: str, key: bytes) -> bytes:
+    """
+    Decrypts ciphertext using AES-128 in ECB mode and removes PKCS#7 padding.
+    
+    Args:
+        ciphertext: Base64-encoded ciphertext string
+        key: 16-byte AES key (128 bits)
+        
+    Returns:
+        bytes: Decrypted plaintext
+        
+    Raises:
+        ValueError: If key length is not 16 bytes or decryption fails
+    """
+    if len(key) != 16:
+        raise ValueError(f"AES-128 requires 16-byte key, got {len(key)} bytes")
+    
+    # Decode base64 ciphertext
+    ciphertext_bytes = b64d(ciphertext)
+    
+    # Create AES cipher in ECB mode
+    cipher = Cipher(
+        algorithms.AES(key),
+        modes.ECB(),
+        backend=default_backend()
+    )
+    
+    # Create decryptor
+    decryptor = cipher.decryptor()
+    
+    # Decrypt
+    padded_plaintext = decryptor.update(ciphertext_bytes) + decryptor.finalize()
+    
+    # Remove PKCS#7 padding
+    unpadder = padding.PKCS7(128).unpadder()
+    plaintext = unpadder.update(padded_plaintext)
+    plaintext += unpadder.finalize()
+    
+    return plaintext

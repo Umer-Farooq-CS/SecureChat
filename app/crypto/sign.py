@@ -55,5 +55,93 @@ Result:
 ================================================================================
 """
 
-"""RSA PKCS#1 v1.5 SHA-256 sign/verify.""" 
-raise NotImplementedError("students: implement RSA helpers")
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding, rsa
+from cryptography.hazmat.primitives.serialization import load_pem_private_key
+
+from app.common.utils import b64e, b64d
+
+
+def sign_data(data: bytes, private_key: rsa.RSAPrivateKey) -> str:
+    """
+    Signs data using RSA private key with PKCS#1 v1.5 and SHA-256.
+    
+    Args:
+        data: Data to sign (bytes)
+        private_key: RSA private key
+        
+    Returns:
+        str: Base64-encoded signature
+    """
+    signature = private_key.sign(
+        data,
+        padding.PKCS1v15(),
+        hashes.SHA256()
+    )
+    return b64e(signature)
+
+
+def verify_signature(
+    signature: str,
+    data: bytes,
+    public_key: rsa.RSAPublicKey
+) -> bool:
+    """
+    Verifies RSA signature using public key.
+    
+    Args:
+        signature: Base64-encoded signature string
+        data: Original data that was signed (bytes)
+        public_key: RSA public key for verification
+        
+    Returns:
+        bool: True if signature is valid, False otherwise
+        
+    Raises:
+        InvalidSignature: If signature verification fails
+    """
+    try:
+        signature_bytes = b64d(signature)
+        public_key.verify(
+            signature_bytes,
+            data,
+            padding.PKCS1v15(),
+            hashes.SHA256()
+        )
+        return True
+    except InvalidSignature:
+        return False
+
+
+def load_private_key_from_pem(pem_data: bytes, password: bytes = None) -> rsa.RSAPrivateKey:
+    """
+    Loads RSA private key from PEM format.
+    
+    Args:
+        pem_data: PEM-encoded private key data
+        password: Optional password for encrypted keys
+        
+    Returns:
+        RSAPrivateKey: Loaded private key
+    """
+    return load_pem_private_key(
+        pem_data,
+        password=password,
+        backend=default_backend(),
+        unsafe_skip_rsa_key_validation=False
+    )
+
+
+def get_public_key_from_private(private_key: rsa.RSAPrivateKey) -> rsa.RSAPublicKey:
+    """
+    Extracts public key from private key.
+    
+    Args:
+        private_key: RSA private key
+        
+    Returns:
+        RSAPublicKey: Corresponding public key
+    """
+    return private_key.public_key()

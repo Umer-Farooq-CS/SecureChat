@@ -59,12 +59,55 @@ Result:
 ================================================================================
 """
 
-"""Helper signatures: now_ms, b64e, b64d, sha256_hex."""
+import base64
+import hashlib
+import time
 
-def now_ms(): raise NotImplementedError
 
-def b64e(b: bytes): raise NotImplementedError
+def now_ms() -> int:
+    """
+    Returns current Unix timestamp in milliseconds.
+    
+    Returns:
+        int: Current timestamp in milliseconds since epoch
+    """
+    return int(time.time() * 1000)
 
-def b64d(s: str): raise NotImplementedError
 
-def sha256_hex(data: bytes): raise NotImplementedError
+def b64e(b: bytes) -> str:
+    """
+    Base64 encodes bytes to string.
+    
+    Args:
+        b: Bytes to encode
+        
+    Returns:
+        str: Base64-encoded string
+    """
+    return base64.b64encode(b).decode('utf-8')
+
+
+def b64d(s: str) -> bytes:
+    """
+    Base64 decodes string to bytes.
+    
+    Args:
+        s: Base64-encoded string to decode
+        
+    Returns:
+        bytes: Decoded bytes
+    """
+    return base64.b64decode(s)
+
+
+def sha256_hex(data: bytes) -> str:
+    """
+    Computes SHA-256 hash and returns hex string.
+    
+    Args:
+        data: Bytes to hash
+        
+    Returns:
+        str: Hexadecimal representation of SHA-256 hash (64 characters)
+    """
+    return hashlib.sha256(data).hexdigest()

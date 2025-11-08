@@ -1,42 +1,40 @@
 # SecureChat – Assignment #2 (CS-3002 Information Security, Fall 2025)
 
-================================================================================
-Assignment #2 - Secure Chat System
-Information Security (CS-3002)
-FAST-NUCES, Fall 2025
-================================================================================
+---
 
-Student Information:
-    Name: Umer Farooq
-    Roll No: 22I-0891
-    Section: CS-7D
-    Instructor: Urooj Ghani
+**Assignment #2 - Secure Chat System**  
+**Information Security (CS-3002)**  
+**FAST-NUCES, Fall 2025**
 
-================================================================================
-File: README.md
-Purpose: Main project documentation and user guide
-================================================================================
+**Student Information:**
+- **Name:** Umer Farooq
+- **Roll No:** 22I-0891
+- **Section:** CS-7D
+- **Instructor:** Urooj Ghani
 
-Description:
-    This file provides comprehensive documentation for the SecureChat system,
-    including setup instructions, execution steps, configuration details,
-    sample input/output formats, and testing procedures.
+---
 
-Links to Other Files:
-    - SETUP.md: Detailed setup guide with prerequisites
-    - PROJECT_STRUCTURE.md: Project structure documentation
-    - schema.sql: Database schema definition
-    - tests/manual/NOTES.md: Testing checklist and procedures
-    - .env.example: Configuration template
-    - requirements.txt: Python dependencies
+**File:** `README.md`  
+**Purpose:** Main project documentation and user guide
 
-Result:
-    - Provides complete user guide for the system
-    - Documents all setup and execution procedures
-    - Includes sample I/O formats and testing guidelines
-    - Serves as primary reference for users and TAs
+**Description:**
+This file provides comprehensive documentation for the SecureChat system, including setup instructions, execution steps, configuration details, sample input/output formats, and testing procedures.
 
-================================================================================
+**Links to Other Files:**
+- `SETUP.md`: Detailed setup guide with prerequisites
+- `PROJECT_STRUCTURE.md`: Project structure documentation
+- `schema.sql`: Database schema definition
+- `tests/manual/NOTES.md`: Testing checklist and procedures
+- `.env.example`: Configuration template
+- `requirements.txt`: Python dependencies
+
+**Result:**
+- Provides complete user guide for the system
+- Documents all setup and execution procedures
+- Includes sample I/O formats and testing guidelines
+- Serves as primary reference for users and TAs
+
+---
 
 A **console-based, PKI-enabled Secure Chat System** implemented in **Python**, demonstrating how cryptographic primitives combine to achieve:
 

@@ -1,42 +1,40 @@
 # Detailed Setup Guide
 
-================================================================================
-Assignment #2 - Secure Chat System
-Information Security (CS-3002)
-FAST-NUCES, Fall 2025
-================================================================================
+---
 
-Student Information:
-    Name: Umer Farooq
-    Roll No: 22I-0891
-    Section: CS-7D
-    Instructor: Urooj Ghani
+**Assignment #2 - Secure Chat System**  
+**Information Security (CS-3002)**  
+**FAST-NUCES, Fall 2025**
 
-================================================================================
-File: SETUP.md
-Purpose: Detailed setup guide with step-by-step instructions
-================================================================================
+**Student Information:**
+- **Name:** Umer Farooq
+- **Roll No:** 22I-0891
+- **Section:** CS-7D
+- **Instructor:** Urooj Ghani
 
-Description:
-    This file provides comprehensive step-by-step instructions for setting up
-    the SecureChat system from scratch, including prerequisites installation,
-    environment configuration, database setup, and certificate generation.
+---
 
-Links to Other Files:
-    - README.md: Main project documentation
-    - PROJECT_STRUCTURE.md: Project structure reference
-    - schema.sql: Database schema for initialization
-    - .env.example: Configuration template
-    - scripts/gen_ca.py: CA generation script
-    - scripts/gen_cert.py: Certificate issuance script
+**File:** `SETUP.md`  
+**Purpose:** Detailed setup guide with step-by-step instructions
 
-Result:
-    - Enables users to set up the system from scratch
-    - Provides troubleshooting guidance
-    - Includes verification checklist
-    - Ensures proper system configuration
+**Description:**
+This file provides comprehensive step-by-step instructions for setting up the SecureChat system from scratch, including prerequisites installation, environment configuration, database setup, and certificate generation.
 
-================================================================================
+**Links to Other Files:**
+- `README.md`: Main project documentation
+- `PROJECT_STRUCTURE.md`: Project structure reference
+- `schema.sql`: Database schema for initialization
+- `.env.example`: Configuration template
+- `scripts/gen_ca.py`: CA generation script
+- `scripts/gen_cert.py`: Certificate issuance script
+
+**Result:**
+- Enables users to set up the system from scratch
+- Provides troubleshooting guidance
+- Includes verification checklist
+- Ensures proper system configuration
+
+---
 
 This guide provides step-by-step instructions for setting up the SecureChat system from scratch.
 

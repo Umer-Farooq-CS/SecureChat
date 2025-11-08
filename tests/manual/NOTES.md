@@ -1,43 +1,40 @@
 # Manual Testing & Evidence Checklist
 
-================================================================================
-Assignment #2 - Secure Chat System
-Information Security (CS-3002)
-FAST-NUCES, Fall 2025
-================================================================================
+---
 
-Student Information:
-    Name: Umer Farooq
-    Roll No: 22I-0891
-    Section: CS-7D
-    Instructor: Urooj Ghani
+**Assignment #2 - Secure Chat System**  
+**Information Security (CS-3002)**  
+**FAST-NUCES, Fall 2025**
 
-================================================================================
-File: tests/manual/NOTES.md
-Purpose: Manual testing procedures and evidence collection checklist
-================================================================================
+**Student Information:**
+- **Name:** Umer Farooq
+- **Roll No:** 22I-0891
+- **Section:** CS-7D
+- **Instructor:** Urooj Ghani
 
-Description:
-    This file outlines the manual testing procedures and evidence collection
-    required for Assignment #2, including Wireshark captures, certificate
-    validation tests, tampering tests, replay tests, and non-repudiation
-    verification.
+---
 
-Links to Other Files:
-    - README.md: Referenced in main documentation
-    - app/client.py: Client implementation to test
-    - app/server.py: Server implementation to test
-    - app/crypto/pki.py: Certificate validation to test
-    - app/crypto/sign.py: Signature verification to test
-    - app/storage/transcript.py: Transcript management to test
+**File:** `tests/manual/NOTES.md`  
+**Purpose:** Manual testing procedures and evidence collection checklist
 
-Result:
-    - Provides comprehensive testing checklist
-    - Documents evidence collection procedures
-    - Ensures all security properties are tested
-    - Serves as guide for test report generation
+**Description:**
+This file outlines the manual testing procedures and evidence collection required for Assignment #2, including Wireshark captures, certificate validation tests, tampering tests, replay tests, and non-repudiation verification.
 
-================================================================================
+**Links to Other Files:**
+- `README.md`: Referenced in main documentation
+- `app/client.py`: Client implementation to test
+- `app/server.py`: Server implementation to test
+- `app/crypto/pki.py`: Certificate validation to test
+- `app/crypto/sign.py`: Signature verification to test
+- `app/storage/transcript.py`: Transcript management to test
+
+**Result:**
+- Provides comprehensive testing checklist
+- Documents evidence collection procedures
+- Ensures all security properties are tested
+- Serves as guide for test report generation
+
+---
 
 This document outlines the manual testing procedures and evidence collection required for Assignment #2.
 

@@ -1,40 +1,38 @@
 # Project Structure Documentation
 
-================================================================================
-Assignment #2 - Secure Chat System
-Information Security (CS-3002)
-FAST-NUCES, Fall 2025
-================================================================================
+---
 
-Student Information:
-    Name: Umer Farooq
-    Roll No: 22I-0891
-    Section: CS-7D
-    Instructor: Urooj Ghani
+**Assignment #2 - Secure Chat System**  
+**Information Security (CS-3002)**  
+**FAST-NUCES, Fall 2025**
 
-================================================================================
-File: PROJECT_STRUCTURE.md
-Purpose: Complete project structure documentation
-================================================================================
+**Student Information:**
+- **Name:** Umer Farooq
+- **Roll No:** 22I-0891
+- **Section:** CS-7D
+- **Instructor:** Urooj Ghani
 
-Description:
-    This file documents the complete structure of the SecureChat project,
-    including directory tree, file descriptions, protocol flow, and
-    development workflow.
+---
 
-Links to Other Files:
-    - README.md: Main project documentation
-    - SETUP.md: Setup instructions
-    - All Python files: Referenced in file descriptions
-    - All configuration files: Referenced in structure
+**File:** `PROJECT_STRUCTURE.md`  
+**Purpose:** Complete project structure documentation
 
-Result:
-    - Provides complete overview of project structure
-    - Documents relationships between files
-    - Explains development workflow
-    - Serves as reference for understanding the codebase
+**Description:**
+This file documents the complete structure of the SecureChat project, including directory tree, file descriptions, protocol flow, and development workflow.
 
-================================================================================
+**Links to Other Files:**
+- `README.md`: Main project documentation
+- `SETUP.md`: Setup instructions
+- All Python files: Referenced in file descriptions
+- All configuration files: Referenced in structure
+
+**Result:**
+- Provides complete overview of project structure
+- Documents relationships between files
+- Explains development workflow
+- Serves as reference for understanding the codebase
+
+---
 
 This document describes the complete structure of the SecureChat project.
 

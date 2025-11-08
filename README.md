@@ -42,7 +42,24 @@ A **console-based, PKI-enabled Secure Chat System** implemented in **Python**, d
 
 ## 🔗 Repository
 
-**GitHub Repository:** [Your GitHub Repository Link Here]
+**GitHub Repository:** [https://github.com/Umer-Farooq-CS/SecureChat](https://github.com/Umer-Farooq-CS/SecureChat)
+
+**Repository Topics:**
+- `secure-chat`
+- `cryptography`
+- `pki`
+- `aes-128`
+- `rsa`
+- `diffie-hellman`
+- `sha-256`
+- `x509-certificates`
+- `information-security`
+- `python`
+- `client-server`
+- `encryption`
+- `authentication`
+- `non-repudiation`
+- `ciandr`
 
 ## 🧩 Overview
 
@@ -565,13 +582,22 @@ When submitting on Google Classroom (GCR):
 
 ## 👤 Author
 
-[Your Name]  
-[Your Roll Number]  
-FAST-NUCES, Fall 2025
+**Umer Farooq**  
+**Roll No:** 22I-0891  
+**Section:** CS-7D  
+**Institution:** FAST-NUCES  
+**Semester:** Fall 2025  
+**Course:** Information Security (CS-3002)  
+**Instructor:** Urooj Ghani
+
+**Contact:**
+- GitHub: [@Umer-Farooq-CS](https://github.com/Umer-Farooq-CS)
 
 ## 📄 License
 
-This project is for educational purposes only.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+**Note:** This project is for educational purposes only. Do not use in production without proper security audits.
 
 ---
 

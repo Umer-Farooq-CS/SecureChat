@@ -46,7 +46,8 @@ env/
 *.pfx
 
 # Certificates and keys (NEVER COMMIT)
-certs/
+certs/*
+!certs/.keep
 *.key
 *.pem
 *.crt
@@ -59,7 +60,8 @@ client-key.pem
 client-cert.pem
 
 # Transcripts and session logs
-transcripts/
+transcripts/*
+!transcripts/.keep
 *.transcript
 *.log
 *.receipt

@@ -1,0 +1,62 @@
+# ================================================================================
+# Assignment #2 - Secure Chat System
+# Information Security (CS-3002)
+# FAST-NUCES, Fall 2025
+# ================================================================================
+#
+# Student Information:
+#     Name: Umer Farooq
+#     Roll No: 22I-0891
+#     Section: CS-7D
+#     Instructor: Urooj Ghani
+#
+# ================================================================================
+# File: transcripts/.keep
+# Purpose: Directory placeholder for session transcripts and receipts
+# ================================================================================
+#
+# Description:
+#     This directory stores session transcripts and SessionReceipts generated
+#     during chat sessions. These files are gitignored and contain sensitive
+#     session data.
+#
+# Expected Files:
+#     - session_YYYYMMDD_HHMMSS.txt: Session transcript files
+#     - session_YYYYMMDD_HHMMSS_receipt.json: SessionReceipt JSON files
+#
+# Transcript Format:
+#     seqno | timestamp | ciphertext | signature | peer-cert-fingerprint
+#
+# SessionReceipt Format (JSON):
+#     {
+#         "type": "receipt",
+#         "peer": "client|server",
+#         "first_seq": 1,
+#         "last_seq": 10,
+#         "transcript_sha256": "hex_hash",
+#         "sig": "base64_rsa_signature"
+#     }
+#
+# Links to Other Files:
+#     - app/storage/transcript.py: Generates transcript and receipt files
+#     - app/client.py: Creates client-side transcripts
+#     - app/server.py: Creates server-side transcripts
+#     - .gitignore: This directory is gitignored
+#     - tests/manual/NOTES.md: Referenced in testing procedures
+#
+# Result:
+#     - Provides storage for session transcripts
+#     - Enables non-repudiation evidence
+#     - Allows offline verification of sessions
+#     - Prevents accidental commit of sensitive session data
+#
+# ================================================================================
+
+# This directory stores session transcripts and receipts
+# These files are gitignored
+#
+# Transcript files contain:
+# - seqno | timestamp | ciphertext | signature | peer-cert-fingerprint
+#
+# SessionReceipt files contain:
+# - Signed transcript hash for non-repudiation

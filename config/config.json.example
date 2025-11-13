@@ -1,0 +1,32 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": 8888,
+    "cert_path": "certs/server-cert.pem",
+    "key_path": "certs/server-key.pem"
+  },
+  "client": {
+    "cert_path": "certs/client-cert.pem",
+    "key_path": "certs/client-key.pem"
+  },
+  "ca": {
+    "cert_path": "certs/ca-cert.pem"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "name": "securechat",
+    "user": "scuser",
+    "password": "scpass"
+  },
+  "paths": {
+    "certs_dir": "certs",
+    "transcripts_dir": "transcripts"
+  },
+  "crypto": {
+    "dh_key_size": 2048,
+    "dh_generator": 2,
+    "aes_key_size": 16
+  }
+}
+

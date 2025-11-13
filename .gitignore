@@ -49,6 +49,9 @@ env/
 *.p12
 *.pfx
 
+# Configuration (optional - uncomment if you want to keep config.json private)
+# config/config.json
+
 # Certificates and keys (NEVER COMMIT)
 certs/*
 !certs/.keep

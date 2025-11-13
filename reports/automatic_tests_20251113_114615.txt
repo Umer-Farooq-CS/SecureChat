@@ -1,0 +1,70 @@
+================================================================================
+TEST REPORT - AUTOMATIC TEST SUITE
+================================================================================
+
+Report Type: automatic_tests
+Test Date: 2025-11-13 11:46:15
+
+--------------------------------------------------------------------------------
+SUMMARY
+--------------------------------------------------------------------------------
+
+Total Tests Run:     88
+Passed:              88
+Failed:              0
+Errors:              0
+Skipped:             9
+Success Rate:        100.0%
+Overall Status:      PASS
+
+--------------------------------------------------------------------------------
+TEST MODULES
+--------------------------------------------------------------------------------
+
+  - test_protocol.py - Protocol message models
+  - test_cert_gen.py - Certificate generation
+  - test_db.py - Database operations
+  - test_transcript.py - Transcript management
+  - test_server_client.py - Server/Client integration
+  - test_utils.py - Utility functions
+  - test_aes.py - AES encryption
+  - test_sign.py - RSA signatures
+  - test_dh.py - Diffie-Hellman key exchange
+  - test_pki.py - PKI certificate validation
+  - test_integration.py - Crypto integration
+  - test_config.py - Configuration system
+
+--------------------------------------------------------------------------------
+SKIPPED TESTS (9)
+--------------------------------------------------------------------------------
+
+  - test_database_connection (tests.test_db.TestDatabase.test_database_connection)
+    Reason: Database not available
+
+  - test_duplicate_email_registration (tests.test_db.TestDatabase.test_duplicate_email_registration)
+    Reason: Database not available
+
+  - test_duplicate_username_registration (tests.test_db.TestDatabase.test_duplicate_username_registration)
+    Reason: Database not available
+
+  - test_get_user_by_email (tests.test_db.TestDatabase.test_get_user_by_email)
+    Reason: Database not available
+
+  - test_password_hash_verification (tests.test_db.TestDatabase.test_password_hash_verification)
+    Reason: Database not available
+
+  - test_password_hashing (tests.test_db.TestDatabase.test_password_hashing)
+    Reason: Database not available
+
+  - test_salt_generation (tests.test_db.TestDatabase.test_salt_generation)
+    Reason: Database not available
+
+  - test_user_authentication (tests.test_db.TestDatabase.test_user_authentication)
+    Reason: Database not available
+
+  - test_user_registration (tests.test_db.TestDatabase.test_user_registration)
+    Reason: Database not available
+
+================================================================================
+END OF REPORT
+================================================================================

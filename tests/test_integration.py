@@ -73,7 +73,7 @@ class TestIntegration(unittest.TestCase):
         
         # Generate DH parameters
         self.dh_params = generate_dh_parameters(generator=2, key_size=512)
-        print("  ✓ DH parameters generated")
+        print("   DH parameters generated")
         
         # Generate RSA key pairs for client and server
         self.client_rsa_private = rsa.generate_private_key(
@@ -90,8 +90,8 @@ class TestIntegration(unittest.TestCase):
         )
         self.server_rsa_public = get_public_key_from_private(self.server_rsa_private)
         
-        print("  ✓ RSA key pairs generated")
-        print("  ✓ Integration test environment ready")
+        print("   RSA key pairs generated")
+        print("   Integration test environment ready")
 
     def test_complete_secure_message_flow(self):
         """Test complete secure message flow: DH -> AES -> Sign."""
@@ -122,7 +122,7 @@ class TestIntegration(unittest.TestCase):
         
         self.assertEqual(client_shared_secret, server_shared_secret,
                        "Shared secrets should match")
-        print("    ✓ Shared secret derived")
+        print("     Shared secret derived")
         
         # Step 2: Derive session keys
         print("  Step 2: Deriving session keys...")
@@ -134,7 +134,7 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(len(client_session_key), 16,
                        "Session key should be 16 bytes")
         print(f"    Session key: {client_session_key.hex()}")
-        print("    ✓ Session keys derived")
+        print("     Session keys derived")
         
         # Step 3: Encrypt and sign message
         print("  Step 3: Encrypting and signing message...")
@@ -159,7 +159,7 @@ class TestIntegration(unittest.TestCase):
             self.client_rsa_public
         )
         self.assertTrue(is_valid, "Signature should be valid")
-        print("    ✓ Signature verified")
+        print("     Signature verified")
         
         # Server decrypts message
         decrypted = decrypt_aes128(ciphertext, server_session_key)
@@ -168,9 +168,9 @@ class TestIntegration(unittest.TestCase):
         # Verify round-trip
         self.assertEqual(message, decrypted,
                        "Decrypted message should match original")
-        print("    ✓ Message decrypted correctly")
+        print("     Message decrypted correctly")
         
-        print("  ✓ Complete secure message flow test passed")
+        print("   Complete secure message flow test passed")
 
     def test_multiple_messages_exchange(self):
         """Test multiple messages in a session."""
@@ -226,7 +226,7 @@ class TestIntegration(unittest.TestCase):
             self.assertEqual(message, decrypted,
                           f"Message {i} round-trip failed")
         
-        print("\n  ✓ All messages exchanged successfully")
+        print("\n   All messages exchanged successfully")
 
     def test_tampering_detection_in_encrypted_message(self):
         """Test that tampering is detected in encrypted messages."""
@@ -262,7 +262,7 @@ class TestIntegration(unittest.TestCase):
             tampered_ciphertext.encode('utf-8'),
             self.client_rsa_public
         )
-        print(f"  Signature verification: {'✓ Valid' if is_valid else '✗ Invalid (expected)'}")
+        print(f"  Signature verification: {' Valid' if is_valid else ' Invalid (expected)'}")
         self.assertFalse(is_valid,
                         "Tampered ciphertext should not verify")
         
@@ -275,7 +275,7 @@ class TestIntegration(unittest.TestCase):
         except Exception as e:
             print(f"  Decryption failed (expected): {type(e).__name__}")
         
-        print("  ✓ Tampering detection test passed")
+        print("   Tampering detection test passed")
 
     def test_bidirectional_communication(self):
         """Test bidirectional secure communication."""
@@ -308,7 +308,7 @@ class TestIntegration(unittest.TestCase):
         
         server_decrypted = decrypt_aes128(client_ciphertext, session_key)
         self.assertEqual(client_message, server_decrypted, "Server should decrypt client message")
-        print("  ✓ Client -> Server communication successful")
+        print("   Client -> Server communication successful")
         
         # Server sends response to client
         server_message = b"Hello from server!"
@@ -325,9 +325,9 @@ class TestIntegration(unittest.TestCase):
         
         client_decrypted = decrypt_aes128(server_ciphertext, session_key)
         self.assertEqual(server_message, client_decrypted, "Client should decrypt server message")
-        print("  ✓ Server -> Client communication successful")
+        print("   Server -> Client communication successful")
         
-        print("  ✓ Bidirectional communication test passed")
+        print("   Bidirectional communication test passed")
 
 
 def run_tests():
@@ -343,9 +343,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All integration tests PASSED")
+        print(" All integration tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()

@@ -82,7 +82,7 @@ class TestUtils(unittest.TestCase):
                 self.assertEqual(original, decoded, 
                                f"Round-trip failed for: {original}")
         
-        print("  ✓ All base64 tests passed")
+        print("   All base64 tests passed")
 
     def test_base64_known_values(self):
         """Test base64 encoding with known values."""
@@ -108,9 +108,9 @@ class TestUtils(unittest.TestCase):
                                f"Encoding mismatch for: {original}")
                 self.assertEqual(decoded, original,
                                f"Decoding mismatch for: {original}")
-                print(f"  ✓ {original} -> {encoded}")
+                print(f"   {original} -> {encoded}")
         
-        print("  ✓ All known value tests passed")
+        print("   All known value tests passed")
 
     def test_sha256_hash(self):
         """Test SHA-256 hash computation."""
@@ -147,7 +147,7 @@ class TestUtils(unittest.TestCase):
                 self.assertEqual(computed_hash, hash2,
                                "Hash should be deterministic")
         
-        print("  ✓ All SHA-256 tests passed")
+        print("   All SHA-256 tests passed")
 
     def test_sha256_known_vectors(self):
         """Test SHA-256 with known test vectors."""
@@ -165,9 +165,9 @@ class TestUtils(unittest.TestCase):
                 computed_hash = sha256_hex(data)
                 self.assertEqual(computed_hash, expected_hash,
                                f"Hash mismatch for: {data}")
-                print(f"  ✓ {data} -> {computed_hash[:16]}...")
+                print(f"   {data} -> {computed_hash[:16]}...")
         
-        print("  ✓ All known vector tests passed")
+        print("   All known vector tests passed")
 
     def test_timestamp_generation(self):
         """Test timestamp generation."""
@@ -204,7 +204,7 @@ class TestUtils(unittest.TestCase):
         self.assertLessEqual(diff, 200,  # At most 200ms (with tolerance)
                            "Timestamp difference should not be too large")
         
-        print("  ✓ All timestamp tests passed")
+        print("   All timestamp tests passed")
 
     def test_timestamp_format(self):
         """Test timestamp format and range."""
@@ -231,7 +231,7 @@ class TestUtils(unittest.TestCase):
         self.assertAlmostEqual(ts_year, current_year, delta=1,
                                msg="Timestamp should represent current time")
         
-        print("  ✓ All format tests passed")
+        print("   All format tests passed")
 
     def test_integration_encoding_hashing(self):
         """Test integration of encoding and hashing."""
@@ -261,7 +261,7 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(hash_original, hash_decoded,
                        "Hash should be same for original and decoded")
         
-        print("  ✓ Integration test passed")
+        print("   Integration test passed")
 
 
 def run_tests():
@@ -277,9 +277,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All utility function tests PASSED")
+        print(" All utility function tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()

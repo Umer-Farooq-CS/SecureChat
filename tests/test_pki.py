@@ -197,7 +197,7 @@ class TestPKI(unittest.TestCase):
             datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=365)
         ).sign(self_signed_private, hashes.SHA256())
         
-        print("  ✓ Test certificates created")
+        print("   Test certificates created")
 
     def test_certificate_loading_from_bytes(self):
         """Test loading certificate from bytes."""
@@ -209,13 +209,13 @@ class TestPKI(unittest.TestCase):
         
         # Load certificate from bytes
         loaded_cert = load_certificate_from_bytes(cert_pem)
-        print("  ✓ Certificate loaded from bytes")
+        print("   Certificate loaded from bytes")
         
         # Verify it's the same certificate
         self.assertEqual(loaded_cert.serial_number, self.server_cert.serial_number,
                        "Loaded certificate should match original")
         
-        print("  ✓ All loading tests passed")
+        print("   All loading tests passed")
 
     def test_certificate_chain_validation(self):
         """Test certificate chain validation."""
@@ -223,7 +223,7 @@ class TestPKI(unittest.TestCase):
         
         # Valid chain: server cert signed by CA
         is_valid = validate_certificate_chain(self.server_cert, self.ca_cert)
-        print(f"  Server cert signed by CA: {'✓ Valid' if is_valid else '✗ Invalid'}")
+        print(f"  Server cert signed by CA: {' Valid' if is_valid else ' Invalid'}")
         self.assertTrue(is_valid,
                       "Server certificate should be valid (signed by CA)")
         
@@ -231,12 +231,12 @@ class TestPKI(unittest.TestCase):
         with self.assertRaises(CertificateValidationError,
                              msg="Self-signed certificate should raise exception"):
             validate_certificate_chain(self.self_signed_cert, self.ca_cert)
-        print("  ✓ Self-signed cert correctly rejected (exception raised)")
+        print("   Self-signed cert correctly rejected (exception raised)")
         
         # Invalid chain: wrong CA
         # (We can't easily test this without another CA, but the logic is covered)
         
-        print("  ✓ All chain validation tests passed")
+        print("   All chain validation tests passed")
 
     def test_certificate_expiry(self):
         """Test certificate expiry checking."""
@@ -244,7 +244,7 @@ class TestPKI(unittest.TestCase):
         
         # Valid certificate (not expired)
         is_valid = check_certificate_expiry(self.server_cert)
-        print(f"  Valid certificate: {'✓ Not expired' if is_valid else '✗ Expired'}")
+        print(f"  Valid certificate: {' Not expired' if is_valid else ' Expired'}")
         self.assertTrue(is_valid,
                       "Valid certificate should not be expired")
         
@@ -252,9 +252,9 @@ class TestPKI(unittest.TestCase):
         with self.assertRaises(CertificateValidationError,
                              msg="Expired certificate should raise exception"):
             check_certificate_expiry(self.expired_cert)
-        print("  ✓ Expired certificate correctly rejected (exception raised)")
+        print("   Expired certificate correctly rejected (exception raised)")
         
-        print("  ✓ All expiry tests passed")
+        print("   All expiry tests passed")
 
     def test_certificate_cn_extraction(self):
         """Test Common Name (CN) extraction."""
@@ -274,7 +274,7 @@ class TestPKI(unittest.TestCase):
         self.assertEqual(ca_cn, "Test CA",
                        "CA CN should be 'Test CA'")
         
-        print("  ✓ All CN extraction tests passed")
+        print("   All CN extraction tests passed")
 
     def test_certificate_san_extraction(self):
         """Test Subject Alternative Name (SAN) extraction."""
@@ -294,7 +294,7 @@ class TestPKI(unittest.TestCase):
         print(f"  CA certificate SAN: {ca_san}")
         # This is fine - CA might not have SAN
         
-        print("  ✓ All SAN extraction tests passed")
+        print("   All SAN extraction tests passed")
 
     def test_hostname_validation(self):
         """Test hostname validation against CN and SAN."""
@@ -302,13 +302,13 @@ class TestPKI(unittest.TestCase):
         
         # Valid hostname (matches CN)
         is_valid = validate_certificate_hostname(self.server_cert, "server.local")
-        print(f"  Hostname 'server.local' (CN match): {'✓ Valid' if is_valid else '✗ Invalid'}")
+        print(f"  Hostname 'server.local' (CN match): {' Valid' if is_valid else ' Invalid'}")
         self.assertTrue(is_valid,
                       "Hostname matching CN should be valid")
         
         # Valid hostname (matches SAN)
         is_valid = validate_certificate_hostname(self.server_cert, "server.local")
-        print(f"  Hostname 'server.local' (SAN match): {'✓ Valid' if is_valid else '✗ Invalid'}")
+        print(f"  Hostname 'server.local' (SAN match): {' Valid' if is_valid else ' Invalid'}")
         self.assertTrue(is_valid,
                       "Hostname matching SAN should be valid")
         
@@ -316,9 +316,9 @@ class TestPKI(unittest.TestCase):
         with self.assertRaises(CertificateValidationError,
                              msg="Wrong hostname should raise exception"):
             validate_certificate_hostname(self.server_cert, "wrong.hostname")
-        print("  ✓ Wrong hostname correctly rejected (exception raised)")
+        print("   Wrong hostname correctly rejected (exception raised)")
         
-        print("  ✓ All hostname validation tests passed")
+        print("   All hostname validation tests passed")
 
     def test_comprehensive_certificate_validation(self):
         """Test comprehensive certificate validation."""
@@ -331,7 +331,7 @@ class TestPKI(unittest.TestCase):
                 self.ca_cert,
                 expected_hostname="server.local"
             )
-            print(f"  Valid certificate: {'✓ Valid' if result else '✗ Invalid'}")
+            print(f"  Valid certificate: {' Valid' if result else ' Invalid'}")
             self.assertTrue(result,
                           "Valid certificate should pass validation")
         except CertificateValidationError as e:
@@ -344,7 +344,7 @@ class TestPKI(unittest.TestCase):
                 self.ca_cert,
                 expected_hostname="wrong.hostname"
             )
-        print("  ✓ Invalid hostname correctly rejected")
+        print("   Invalid hostname correctly rejected")
         
         # Expired certificate
         with self.assertRaises(CertificateValidationError):
@@ -353,7 +353,7 @@ class TestPKI(unittest.TestCase):
                 self.ca_cert,
                 expected_hostname="server.local"
             )
-        print("  ✓ Expired certificate correctly rejected")
+        print("   Expired certificate correctly rejected")
         
         # Self-signed certificate
         with self.assertRaises(CertificateValidationError):
@@ -362,9 +362,9 @@ class TestPKI(unittest.TestCase):
                 self.ca_cert,
                 expected_hostname="server.local"
             )
-        print("  ✓ Self-signed certificate correctly rejected")
+        print("   Self-signed certificate correctly rejected")
         
-        print("  ✓ All comprehensive validation tests passed")
+        print("   All comprehensive validation tests passed")
 
     def test_certificate_fingerprint(self):
         """Test certificate fingerprint computation."""
@@ -392,7 +392,7 @@ class TestPKI(unittest.TestCase):
         self.assertNotEqual(fingerprint, ca_fingerprint,
                            "Different certificates should have different fingerprints")
         
-        print("  ✓ All fingerprint tests passed")
+        print("   All fingerprint tests passed")
 
     def test_public_key_extraction(self):
         """Test public key extraction from certificate."""
@@ -400,7 +400,7 @@ class TestPKI(unittest.TestCase):
         
         # Extract public key
         public_key = get_public_key_from_certificate(self.server_cert)
-        print("  ✓ Public key extracted from certificate")
+        print("   Public key extracted from certificate")
         
         # Verify it's an RSA public key
         self.assertIsInstance(public_key, rsa.RSAPublicKey,
@@ -412,7 +412,7 @@ class TestPKI(unittest.TestCase):
         self.assertEqual(key_size, 2048,
                        "Public key should be 2048 bits")
         
-        print("  ✓ All public key extraction tests passed")
+        print("   All public key extraction tests passed")
 
 
 def run_tests():
@@ -428,9 +428,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All PKI tests PASSED")
+        print(" All PKI tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()

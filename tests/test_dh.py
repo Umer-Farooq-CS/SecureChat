@@ -70,7 +70,7 @@ class TestDH(unittest.TestCase):
         print("\n[SETUP] Generating DH parameters...")
         # Generate DH parameters (smaller size for faster testing)
         self.parameters = generate_dh_parameters(generator=2, key_size=512)
-        print("  ✓ DH parameters generated (512 bits)")
+        print("   DH parameters generated (512 bits)")
 
     def test_parameter_generation(self):
         """Test DH parameter generation."""
@@ -78,7 +78,7 @@ class TestDH(unittest.TestCase):
         
         # Generate parameters
         params = generate_dh_parameters(generator=2, key_size=512)
-        print("  ✓ Parameters generated")
+        print("   Parameters generated")
         
         # Verify parameters object
         self.assertIsNotNone(params,
@@ -100,7 +100,7 @@ class TestDH(unittest.TestCase):
         self.assertGreaterEqual(p.bit_length(), 512,
                               "Prime should be at least 512 bits")
         
-        print("  ✓ All parameter generation tests passed")
+        print("   All parameter generation tests passed")
 
     def test_key_pair_generation(self):
         """Test key pair generation from parameters."""
@@ -108,11 +108,11 @@ class TestDH(unittest.TestCase):
         
         # Generate private key
         private_key = generate_private_key(self.parameters)
-        print("  ✓ Private key generated")
+        print("   Private key generated")
         
         # Get public key
         public_key = get_public_key(private_key)
-        print("  ✓ Public key extracted")
+        print("   Public key extracted")
         
         # Verify keys are not None
         self.assertIsNotNone(private_key,
@@ -136,7 +136,7 @@ class TestDH(unittest.TestCase):
                         self.parameters.parameter_numbers().p,
                         "Parameters should match")
         
-        print("  ✓ All key pair generation tests passed")
+        print("   All key pair generation tests passed")
 
     def test_key_exchange(self):
         """Test Diffie-Hellman key exchange."""
@@ -171,7 +171,7 @@ class TestDH(unittest.TestCase):
         self.assertGreater(len(client_shared_secret), 0,
                          "Shared secret should not be empty")
         
-        print("  ✓ All key exchange tests passed")
+        print("   All key exchange tests passed")
 
     def test_session_key_derivation(self):
         """Test session key derivation from shared secret."""
@@ -199,7 +199,7 @@ class TestDH(unittest.TestCase):
         self.assertEqual(session_key, session_key2,
                        "Session key derivation should be deterministic")
         
-        print("  ✓ All session key derivation tests passed")
+        print("   All session key derivation tests passed")
 
     def test_client_server_exchange_simulation(self):
         """Test complete client-server key exchange simulation."""
@@ -208,7 +208,7 @@ class TestDH(unittest.TestCase):
         # Step 1: Server generates parameters and sends to client
         print("  Step 1: Server generates parameters...")
         server_params = generate_dh_parameters(generator=2, key_size=512)
-        print("    ✓ Parameters generated")
+        print("     Parameters generated")
         
         # Step 2: Both generate key pairs
         print("  Step 2: Both generate key pairs...")
@@ -232,7 +232,7 @@ class TestDH(unittest.TestCase):
         client_public_received = create_public_key_from_value(
             client_public_value, server_params
         )
-        print("    ✓ Public values exchanged")
+        print("     Public values exchanged")
         
         # Step 4: Both compute shared secret
         print("  Step 4: Computing shared secrets...")
@@ -260,7 +260,7 @@ class TestDH(unittest.TestCase):
         self.assertEqual(len(client_session_key), 16,
                        "Session key should be 16 bytes")
         
-        print("  ✓ Complete exchange simulation passed")
+        print("   Complete exchange simulation passed")
 
     def test_different_parameters_different_keys(self):
         """Test that different parameters produce different keys."""
@@ -282,7 +282,7 @@ class TestDH(unittest.TestCase):
         with self.assertRaises(ValueError, msg="Keys from different parameters should not exchange"):
             exchange_key(private1, public2)
         
-        print("  ✓ Different parameters correctly reject key exchange")
+        print("   Different parameters correctly reject key exchange")
 
     def test_session_key_uniqueness(self):
         """Test that different shared secrets produce different session keys."""
@@ -312,7 +312,7 @@ class TestDH(unittest.TestCase):
         self.assertEqual(len(session_key2), 16,
                        "Session key 2 should be 16 bytes")
         
-        print("  ✓ All uniqueness tests passed")
+        print("   All uniqueness tests passed")
 
     def test_public_key_reconstruction(self):
         """Test reconstructing public key from public value."""
@@ -343,7 +343,7 @@ class TestDH(unittest.TestCase):
         shared2 = exchange_key(other_private, original_public)
         
         # Both should work for key exchange
-        print("  ✓ Public key reconstruction test passed")
+        print("   Public key reconstruction test passed")
 
 
 def run_tests():
@@ -359,9 +359,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All Diffie-Hellman tests PASSED")
+        print(" All Diffie-Hellman tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()

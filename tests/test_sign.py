@@ -73,7 +73,7 @@ class TestSign(unittest.TestCase):
             backend=default_backend()
         )
         self.public_key = self.private_key.public_key()
-        print("  ✓ RSA key pair generated (2048 bits)")
+        print("   RSA key pair generated (2048 bits)")
 
     def test_sign_verify_round_trip(self):
         """Test signature generation and verification round-trip."""
@@ -105,12 +105,12 @@ class TestSign(unittest.TestCase):
                 
                 # Verify signature
                 is_valid = verify_signature(signature, message, self.public_key)
-                print(f"    Verification: {'✓ Valid' if is_valid else '✗ Invalid'}")
+                print(f"    Verification: {' Valid' if is_valid else ' Invalid'}")
                 
                 self.assertTrue(is_valid,
                               f"Signature verification failed for: {message}")
         
-        print("  ✓ All round-trip tests passed")
+        print("   All round-trip tests passed")
 
     def test_signature_uniqueness(self):
         """Test that different messages produce different signatures."""
@@ -145,7 +145,7 @@ class TestSign(unittest.TestCase):
         self.assertFalse(verify_signature(sig2, message1, self.public_key),
                         "Signature 2 should NOT verify for message 1")
         
-        print("  ✓ All uniqueness tests passed")
+        print("   All uniqueness tests passed")
 
     def test_message_tampering_detection(self):
         """Test that message tampering is detected."""
@@ -176,12 +176,12 @@ class TestSign(unittest.TestCase):
                 
                 # Verification should fail
                 is_valid = verify_signature(signature, tampered, self.public_key)
-                print(f"    Verification: {'✗ Invalid (expected)' if not is_valid else '✓ Valid (unexpected!)'}")
+                print(f"    Verification: {' Invalid (expected)' if not is_valid else ' Valid (unexpected!)'}")
                 
                 self.assertFalse(is_valid,
                                f"Tampered message should not verify: {tampered}")
         
-        print("  ✓ All tampering detection tests passed")
+        print("   All tampering detection tests passed")
 
     def test_signature_tampering_detection(self):
         """Test that signature tampering is detected."""
@@ -213,14 +213,14 @@ class TestSign(unittest.TestCase):
                 # Verification should fail
                 try:
                     is_valid = verify_signature(tampered_sig, message, self.public_key)
-                    print(f"    Verification: {'✗ Invalid (expected)' if not is_valid else '✓ Valid (unexpected!)'}")
+                    print(f"    Verification: {' Invalid (expected)' if not is_valid else ' Valid (unexpected!)'}")
                     self.assertFalse(is_valid,
                                    "Tampered signature should not verify")
                 except Exception as e:
                     # Some tampering might cause exceptions (invalid base64, etc.)
-                    print(f"    Verification: ✗ Exception (expected): {type(e).__name__}")
+                    print(f"    Verification:  Exception (expected): {type(e).__name__}")
         
-        print("  ✓ All signature tampering tests passed")
+        print("   All signature tampering tests passed")
 
     def test_wrong_key_verification(self):
         """Test that verification with wrong key fails."""
@@ -247,11 +247,11 @@ class TestSign(unittest.TestCase):
         
         # Verify with wrong key (should fail)
         is_valid = verify_signature(signature, message, public_key2)
-        print(f"  Verification with wrong key: {'✗ Invalid (expected)' if not is_valid else '✓ Valid (unexpected!)'}")
+        print(f"  Verification with wrong key: {' Invalid (expected)' if not is_valid else ' Valid (unexpected!)'}")
         self.assertFalse(is_valid,
                        "Verification with wrong key should fail")
         
-        print("  ✓ Wrong key verification test passed")
+        print("   Wrong key verification test passed")
 
     def test_deterministic_signatures(self):
         """Test that same message signed twice produces same signature.
@@ -282,7 +282,7 @@ class TestSign(unittest.TestCase):
         self.assertTrue(verify_signature(sig2, message, self.public_key),
                        "Signature 2 should verify")
         
-        print("  ✓ Determinism test passed")
+        print("   Determinism test passed")
 
     def test_empty_message_signature(self):
         """Test signing and verifying empty message."""
@@ -297,12 +297,12 @@ class TestSign(unittest.TestCase):
         
         # Verify signature
         is_valid = verify_signature(signature, message, self.public_key)
-        print(f"  Verification: {'✓ Valid' if is_valid else '✗ Invalid'}")
+        print(f"  Verification: {' Valid' if is_valid else ' Invalid'}")
         
         self.assertTrue(is_valid,
                        "Empty message signature should verify")
         
-        print("  ✓ Empty message test passed")
+        print("   Empty message test passed")
 
     def test_large_message_signature(self):
         """Test signing and verifying large message."""
@@ -318,12 +318,12 @@ class TestSign(unittest.TestCase):
         
         # Verify signature
         is_valid = verify_signature(signature, message, self.public_key)
-        print(f"  Verification: {'✓ Valid' if is_valid else '✗ Invalid'}")
+        print(f"  Verification: {' Valid' if is_valid else ' Invalid'}")
         
         self.assertTrue(is_valid,
                        "Large message signature should verify")
         
-        print("  ✓ Large message test passed")
+        print("   Large message test passed")
 
 
 def run_tests():
@@ -339,9 +339,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All RSA signature tests PASSED")
+        print(" All RSA signature tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()

@@ -98,7 +98,7 @@ class TestAES(unittest.TestCase):
                 self.assertEqual(message, decrypted,
                                f"Round-trip failed for message: {message}")
         
-        print("  ✓ All round-trip tests passed")
+        print("   All round-trip tests passed")
 
     def test_different_keys_produce_different_ciphertexts(self):
         """Test that different keys produce different ciphertexts."""
@@ -137,11 +137,11 @@ class TestAES(unittest.TestCase):
             # If it doesn't raise an exception, the result should be garbage
             self.assertNotEqual(message, wrong_decrypt,
                               "Wrong key should not decrypt correctly")
-            print("  ✓ Wrong key produces garbage (expected)")
+            print("   Wrong key produces garbage (expected)")
         except Exception as e:
-            print(f"  ✓ Wrong key raises exception (expected): {type(e).__name__}")
+            print(f"   Wrong key raises exception (expected): {type(e).__name__}")
         
-        print("  ✓ All key uniqueness tests passed")
+        print("   All key uniqueness tests passed")
 
     def test_same_message_different_ciphertexts(self):
         """Test that same message encrypted twice produces different ciphertexts.
@@ -166,7 +166,7 @@ class TestAES(unittest.TestCase):
         self.assertEqual(ciphertext1, ciphertext2,
                         "ECB mode: same plaintext + same key = same ciphertext")
         
-        print("  ✓ ECB mode behavior confirmed (deterministic encryption)")
+        print("   ECB mode behavior confirmed (deterministic encryption)")
 
     def test_invalid_key_size(self):
         """Test that invalid key sizes raise errors."""
@@ -199,7 +199,7 @@ class TestAES(unittest.TestCase):
                                      msg=f"Should raise ValueError for {len(invalid_key)}-byte key"):
                     decrypt_aes128(dummy_ciphertext, invalid_key)
         
-        print("  ✓ All invalid key size tests passed")
+        print("   All invalid key size tests passed")
 
     def test_padding_various_lengths(self):
         """Test PKCS#7 padding with various message lengths."""
@@ -225,7 +225,7 @@ class TestAES(unittest.TestCase):
             ciphertext_bytes = len(ciphertext)
             print(f"    Ciphertext length: {ciphertext_bytes} chars")
         
-        print("  ✓ All padding tests passed")
+        print("   All padding tests passed")
 
     def test_ciphertext_tampering(self):
         """Test that tampering with ciphertext is detected."""
@@ -248,12 +248,12 @@ class TestAES(unittest.TestCase):
             # If decryption succeeds, result should be garbage
             self.assertNotEqual(message, decrypted,
                               "Tampered ciphertext should not decrypt to original")
-            print(f"  ✓ Tampering detected: decrypted to garbage: {decrypted[:50]}...")
+            print(f"   Tampering detected: decrypted to garbage: {decrypted[:50]}...")
         except Exception as e:
             # Decryption might raise an exception (padding error)
-            print(f"  ✓ Tampering detected: decryption failed: {type(e).__name__}")
+            print(f"   Tampering detected: decryption failed: {type(e).__name__}")
         
-        print("  ✓ Tampering detection test passed")
+        print("   Tampering detection test passed")
 
     def test_empty_message(self):
         """Test encryption/decryption of empty message."""
@@ -274,7 +274,7 @@ class TestAES(unittest.TestCase):
         self.assertEqual(message, decrypted,
                        "Empty message round-trip failed")
         
-        print("  ✓ Empty message test passed")
+        print("   Empty message test passed")
 
     def test_unicode_message(self):
         """Test encryption/decryption of Unicode message."""
@@ -301,7 +301,7 @@ class TestAES(unittest.TestCase):
         self.assertEqual(decoded_string, "Hello, 世界! 🌍",
                        "Unicode decoding failed")
         
-        print("  ✓ Unicode message test passed")
+        print("   Unicode message test passed")
 
 
 def run_tests():
@@ -317,9 +317,9 @@ def run_tests():
     
     print("\n" + "=" * 70)
     if result.wasSuccessful():
-        print("✓ All AES encryption tests PASSED")
+        print(" All AES encryption tests PASSED")
     else:
-        print("✗ Some tests FAILED")
+        print(" Some tests FAILED")
     print("=" * 70)
     
     return result.wasSuccessful()
